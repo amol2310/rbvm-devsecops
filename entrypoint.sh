@@ -25,4 +25,11 @@ mkdir target
 mv ingestion/normalized_cves.json enrichment/enriched_cves.json decision_engine/prioritized_cves.json target/
 
 echo "Launching Streamlit dashboard..."
-streamlit run dashboard/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+streamlit run dashboard/streamlit_app.py --server.port 8501 --server.address 0.0.0.0 &
+STREAMLIT_PID=$!
+
+echo "Dashboard will stay live for 5 minutes..."
+sleep 300
+
+echo "Shutting down Streamlit (PID: $STREAMLIT_PID)"
+kill $STREAMLIT_PID
