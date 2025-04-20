@@ -9,7 +9,7 @@ fi
 TARGET_IMAGE="$1"
 
 echo "------Scanning Docker image: $TARGET_IMAGE--------"
-sh scanners/run_trivy.sh $TARGET_IMAGE
+sh scanners/run_trivy.sh "$TARGET_IMAGE"
 
 echo "-------Normalizing...--------"
 python ingestion/normalize_trivy.py
