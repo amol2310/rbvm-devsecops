@@ -22,7 +22,7 @@ def format_suggestion(suggestion):
     return "\n".join(line.strip() for line in lines if line.strip())
 
 # Load prioritized CVEs
-with open("/scanner_output/target/", "r") as f:
+with open("scanner_output/target/prioritized_cves.json", "r") as f:
     cves = json.load(f)
 
 df = pd.DataFrame(cves)
