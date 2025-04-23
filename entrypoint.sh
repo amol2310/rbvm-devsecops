@@ -25,7 +25,8 @@ mkdir -p scanner_output/target
 mv ingestion/normalized_cves.json enrichment/enriched_cves.json decision_engine/prioritized_cves.json scanner_output/target/
 
 echo "Launching Streamlit dashboard..."
-streamlit run dashboard/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+# Run Streamlit in background and redirect output
+nohup streamlit run dashboard/streamlit_app.py --server.port 8501 --server.address 0.0.0.0 > /dev/null 2>&1 &
 
 echo "Check the dashboard at http://localhost:8501"
 
