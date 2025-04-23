@@ -30,8 +30,8 @@ nohup streamlit run dashboard/streamlit_app.py --server.port 8501 --server.addre
 
 echo "Check the dashboard at http://localhost:8501"
 
-ACT_ASAP_COUNT=$(jq '[.[] | select(.decision=="Act ASAP")] | length' target/prioritized_cves.json)
-ACT_COUNT=$(jq '[.[] | select(.decision=="Act")] | length' target/prioritized_cves.json)
+ACT_ASAP_COUNT=$(jq '[.[] | select(.decision=="Act ASAP")] | length' scanner_output/target/prioritized_cves.json)
+ACT_COUNT=$(jq '[.[] | select(.decision=="Act")] | length' scanner_output/target/prioritized_cves.json)
 
 echo "CVE Prioritization complete."
 echo "Act ASAP CVEs: $ACT_ASAP_COUNT"
